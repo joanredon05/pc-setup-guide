@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>PC_SETUP.GUIDE</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#000000;
+  --fg:#f2f2f0;
+  --dim:#7a7a76;
+  --line:#2a2a28;
+  --accent:#c6ff3d;
+  --accent-dim:#5c6e2a;
+  --mono:'Space Mono', 'Courier New', monospace;
+  --display:'Silkscreen', var(--mono);
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0; background:var(--bg); color:var(--fg);
+  font-family:var(--mono); font-size:14px; line-height:1.6;
+  background-image:
+    radial-gradient(circle at 20% 10%, rgba(198,255,61,0.04), transparent 40%),
+    radial-gradient(circle at 90% 60%, rgba(198,255,61,0.03), transparent 35%);
+}
+a{color:var(--fg);}
+::selection{background:var(--accent); color:#000;}
+
+.wrap{max-width:920px; margin:0 auto; padding:0 20px;}
+
+/* ---------- NAV ---------- */
+nav.topnav{
+  position:sticky; top:0; z-index:50; background:rgba(0,0,0,0.92);
+  backdrop-filter:blur(4px); border-bottom:1px solid var(--line);
+  font-size:11px; letter-spacing:.05em;
+}
+nav.topnav .wrap{display:flex; justify-content:space-between; align-items:center; padding:10px 20px; flex-wrap:wrap; gap:8px;}
+nav.topnav .brand{color:var(--accent); font-weight:700;}
+nav.topnav .links{display:flex; gap:18px; flex-wrap:wrap;}
+nav.topnav .links a{text-decoration:none; color:var(--dim); text-transform:uppercase;}
+nav.topnav .links a:hover{color:var(--accent);}
+nav.topnav .status{color:var(--dim);}
+nav.topnav .status b{color:var(--accent);}
+
+/* ---------- HERO ---------- */
+.hero{padding:70px 0 40px; border-bottom:1px solid var(--line); position:relative; overflow:hidden;}
+.hero .eyebrow{color:var(--accent); font-size:11px; letter-spacing:.15em; margin-bottom:14px;}
+.hero .eyebrow::before{content:"/ ";}
+.hero h1{
+  font-family:var(--display); font-size:clamp(34px,6vw,64px); line-height:1.05;
+  letter-spacing:.02em; margin:0 0 20px; text-transform:uppercase;
+}
+.hero .sub{color:var(--dim); max-width:520px; margin-bottom:30px; font-size:13px;}
+.hero .meta{display:flex; gap:40px; flex-wrap:wrap; font-size:11px; color:var(--dim); margin-bottom:40px;}
+.hero .meta span{color:var(--accent);}
+.globe-wrap{display:flex; justify-content:center; margin:10px 0 20px; opacity:.9;}
+#globe line, #globe ellipse, #globe circle{stroke:var(--fg); stroke-width:0.6; fill:none; opacity:.55;}
+#globe .rim{stroke:var(--accent); stroke-width:1.1; opacity:.9;}
+.hero .navhint{font-size:11px; color:var(--dim); text-align:center;}
+.hero .navhint b{color:var(--accent);}
+
+/* ---------- STRIPE BAR ---------- */
+.stripe-bar{
+  height:14px;
+  background:repeating-linear-gradient(45deg, var(--fg) 0 8px, transparent 8px 16px);
+  opacity:.85;
+}
+.stripe-bar.thick{
+  height:44px;
+  background:repeating-linear-gradient(45deg, var(--accent) 0 10px, #000 10px 10px, #000 10px 20px);
+  opacity:1;
+}
+.tagline-bar{
+  display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
+  padding:24px 0 30px; font-size:11px; color:var(--dim); letter-spacing:.05em;
+}
+.tagline-bar .txt::before{content:"/ ";}
+.tagline-bar .hl{color:var(--accent); font-weight:700;}
+.expand-control{display:flex; align-items:center;}
+.expand-pill{
+  width:128px; height:30px; border-radius:15px; border:1px solid var(--line);
+  display:flex; align-items:center; justify-content:center; cursor:pointer; position:relative;
+  font-size:9.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--dim);
+  transition:border-color .25s ease, color .25s ease, background .25s ease; font-family:var(--mono);
+}
+.expand-pill::before{
+  content:""; position:absolute; width:14px; height:14px; border-radius:50%;
+  background:var(--dim); left:4px; top:50%; transform:translateY(-50%); transition:all .25s ease;
+  box-shadow:0 0 0 3px var(--bg);
+}
+.expand-pill.on{border-color:var(--accent); color:var(--accent); background:rgba(198,255,61,0.08);}
+.expand-pill.on::before{background:var(--accent); left:auto; right:4px;}
+.expand-pill:hover{border-color:var(--accent); color:var(--accent);}
+
+/* ---------- ICONS (inline decorative) ---------- */
+.icon{display:inline-block; width:14px; height:14px; vertical-align:-2px;}
+.icon path,.icon polygon,.icon circle{stroke:var(--accent); fill:none; stroke-width:1.3;}
+.divider{display:flex; align-items:center; gap:10px; margin:56px 0 28px; color:var(--dim);}
+.divider .line{flex:1; height:1px; background:var(--line);}
+.divider .icons{display:flex; gap:6px;}
+
+/* ---------- SECTIONS ---------- */
+section{padding:10px 0 10px;}
+h2.section-title{
+  font-family:var(--display); font-size:28px; text-transform:uppercase; letter-spacing:.02em;
+  margin:0 0 6px;
+}
+.section-desc{color:var(--dim); font-size:12px; margin-bottom:34px;}
+
+/* ---------- STEPS ---------- */
+.step{border:1px solid var(--line); border-radius:2px; margin-bottom:18px; overflow:hidden;}
+.step-head{
+  display:flex; align-items:baseline; gap:14px; padding:16px 20px;
+  background:linear-gradient(180deg, rgba(198,255,61,0.05), transparent);
+  border-bottom:1px solid var(--line); cursor:pointer; user-select:none;
+}
+.step-head .num{font-family:var(--display); color:var(--accent); font-size:15px; flex-shrink:0;}
+.step-head .title{font-weight:700; text-transform:uppercase; font-size:13px; letter-spacing:.03em; flex:1;}
+.step-head .meta{display:flex; gap:8px; align-items:center; flex-shrink:0;}
+.step-head .cat{font-size:9px; letter-spacing:.08em; color:var(--accent-dim); border:1px solid var(--line); padding:2px 6px; border-radius:2px; text-transform:uppercase;}
+.step-head .time{font-size:10px; color:var(--dim);}
+.step-head .chev{color:var(--dim); font-size:11px; display:inline-block; transition:transform .25s ease, color .25s ease;}
+.step-head:has(+ .step-body.open) .chev{transform:rotate(180deg); color:var(--accent);}
+.step-head:hover .chev{color:var(--accent);}
+@media (max-width:520px){
+  .step-head{flex-wrap:wrap;}
+  .step-head .title{flex-basis:100%; order:1;}
+  .step-head .meta{order:2;}
+}
+.step-body{max-height:0; overflow:hidden; padding:0 20px; transition:max-height .35s ease, padding .35s ease;}
+.step-body.open{max-height:3000px; padding:18px 20px 22px;}
+.step-body p{margin:0 0 12px; font-size:13px;}
+.step-body ul, .step-body ol{margin:0 0 14px; padding-left:20px; font-size:13px;}
+.step-body li{margin-bottom:6px;}
+.step-body a{color:var(--accent); text-decoration:underline; text-decoration-color:var(--accent-dim);}
+.tag{display:inline-block; font-size:10px; border:1px solid var(--accent-dim); color:var(--accent); padding:1px 6px; border-radius:2px; margin-right:6px;}
+
+/* code blocks */
+.code{
+  background:#0a0a09; border:1px solid var(--line); border-radius:2px; margin:12px 0 16px;
+  position:relative; overflow:hidden;
+}
+.code .bar{
+  display:flex; justify-content:space-between; align-items:center; padding:6px 10px;
+  border-bottom:1px solid var(--line); font-size:10px; color:var(--dim); letter-spacing:.05em;
+}
+.code .bar button{
+  background:none; border:1px solid var(--line); color:var(--dim); font-family:var(--mono);
+  font-size:10px; padding:3px 8px; cursor:pointer; border-radius:2px;
+}
+.code .bar button:hover{border-color:var(--accent); color:var(--accent);}
+.code pre{margin:0; padding:12px 14px; overflow-x:auto; font-size:12.5px; color:var(--fg); line-height:1.5;}
+
+/* toggle table */
+.toggle-grid{display:grid; grid-template-columns:1fr 1fr; gap:8px 20px; margin:14px 0 6px;}
+@media (max-width:560px){.toggle-grid{grid-template-columns:1fr;}}
+.toggle-row{display:flex; align-items:center; justify-content:space-between; padding:8px 0; border-bottom:1px dashed var(--line); font-size:12px;}
+.toggle-row .label{max-width:70%;}
+.toggle-row .note{display:block; color:var(--dim); font-size:10.5px; margin-top:2px;}
+.toggle{width:34px; height:18px; border-radius:10px; border:1px solid var(--line); position:relative; flex-shrink:0;}
+.toggle::after{content:""; position:absolute; width:12px; height:12px; border-radius:50%; top:2px; background:var(--dim); left:2px;}
+.toggle.on{border-color:var(--accent);}
+.toggle.on::after{background:var(--accent); left:18px;}
+
+/* AI status cards (O&O ShutUp10 AI tab) */
+.status-card{
+  display:flex; justify-content:space-between; align-items:center; gap:14px;
+  border:1px solid var(--line); border-radius:2px; padding:12px 14px; margin-bottom:8px;
+}
+.status-card .txt{font-size:12px;}
+.status-card .txt b{display:block; font-size:12.5px; margin-bottom:2px;}
+.status-card .dot{width:8px; height:8px; border-radius:50%; flex-shrink:0;}
+.status-card .dot.off{background:var(--accent);}
+.status-card .dot.warn{background:#ff6a3d;}
+.status-card .action{font-size:10px; color:var(--dim); border:1px solid var(--line); padding:3px 8px; border-radius:2px; flex-shrink:0; white-space:nowrap;}
+
+/* ---------- APPS ---------- */
+.apps-columns{columns:3; column-gap:28px;}
+@media (max-width:760px){.apps-columns{columns:2;}}
+@media (max-width:480px){.apps-columns{columns:1;}}
+.app-cat{margin-bottom:20px; break-inside:avoid;}
+.app-cat h3{
+  font-size:11px; text-transform:uppercase; letter-spacing:.1em; color:var(--accent);
+  display:flex; align-items:center; gap:8px; margin:0 0 8px;
+}
+.app-cat h3::before{content:"["; color:var(--dim);}
+.app-cat h3::after{content:"]"; color:var(--dim);}
+.app-list{list-style:none; margin:0; padding:0;}
+.app-list li{border-bottom:1px solid var(--line);}
+.app-list li label{
+  display:flex; align-items:center; gap:9px; padding:4px 0; cursor:pointer; width:100%;
+}
+.app-list li input[type=checkbox]{
+  accent-color:var(--accent); width:13px; height:13px; cursor:pointer; flex-shrink:0;
+}
+.app-list li span{font-size:12px; flex:1;}
+.app-list li input:checked ~ span{color:var(--dim); text-decoration:line-through;}
+.apps-toolbar{
+  display:flex; justify-content:space-between; align-items:center; margin:6px 0 16px;
+  font-size:10.5px; color:var(--dim);
+}
+.apps-toolbar button{
+  background:none; border:1px solid var(--line); color:var(--dim); font-family:var(--mono);
+  font-size:10px; padding:5px 10px; cursor:pointer; border-radius:2px; letter-spacing:.05em; text-transform:uppercase;
+}
+.apps-toolbar button:hover{border-color:var(--accent); color:var(--accent);}
+
+/* ---------- FOOTER ---------- */
+footer{border-top:1px solid var(--line); margin-top:60px; padding:0;}
+footer .navkeys{display:grid; grid-template-columns:repeat(4,1fr); gap:20px; font-size:11px; color:var(--dim); padding:30px 0;}
+@media (max-width:600px){footer .navkeys{grid-template-columns:repeat(2,1fr);}}
+footer .navkeys a{color:var(--dim); text-decoration:none; display:block;}
+footer .navkeys a:hover{color:var(--accent);}
+footer .navkeys .k{color:var(--accent); margin-right:6px;}
+footer .credit{
+  font-size:10.5px; color:var(--dim); display:flex; flex-direction:column; align-items:center;
+  justify-content:center; text-align:center; gap:10px; padding:16px 0 30px;
+}
+footer .credit .id{color:var(--accent); font-weight:700;}
+.barcode{display:flex; gap:2px; align-items:flex-end; height:22px; opacity:.85;}
+.barcode span{width:2px; background:var(--fg);}
+footer .corners{display:flex; justify-content:space-between; color:var(--dim); font-size:11px; padding:8px 0;}
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <div class="wrap">
+    <div class="brand">[/&gt;] PC_SETUP</div>
+    <div class="status">STATUS: <b>READY</b></div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <h1>PC SETUP<br>PROTOCOL</h1>
+    <p class="sub">A reusable, from-scratch checklist for getting a new or reset Windows machine into a clean, private, minimal state.</p>
+    <div class="meta">
+      <div>VERSION <span>01.00.0807</span></div>
+      <div>OS <span>WINDOWS 11</span></div>
+      <div>STEPS <span>14</span></div>
+      <div>LAST EDIT <span>2026-08-07 // 10:55</span></div>
+    </div>
+    <div class="globe-wrap">
+      <svg id="globe" width="300" height="200" viewBox="-140 -95 280 190"></svg>
+    </div>
+  </div>
+</header>
+
+<div class="stripe-bar"></div>
+
+<main class="wrap">
+
+<div class="tagline-bar">
+  <span class="txt">Follow the <span class="hl">steps</span> in order — each one is self-contained</span>
+  <div class="expand-control">
+    <span class="expand-pill" id="expandToggle">Expand all</span>
+  </div>
+</div>
+
+<section id="steps">
+
+<div class="step" data-step="1">
+  <div class="step-head"><span class="num">[ 01 ]</span><span class="title">Get to the Windows setup screens</span><span class="meta"><span class="cat">Account</span><span class="time">~10 min</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <ul>
+      <li><strong>New / fresh install:</strong> <a href="https://www.microsoft.com/software-download/windows11" target="_blank">Media Creation Tool</a> → bootable USB (8GB+) → boot → Custom Install → wipe all partitions.</li>
+      <li><strong>Already has Windows:</strong> Settings → System → Recovery → <strong>Reset this PC</strong> → <strong>Cloud Download</strong> (clean copy from Microsoft, no factory bloatware).</li>
+    </ul>
+    <p>Both land on the same screens. One flow from here:</p>
+    <ol>
+      <li>Language, region, keyboard — pick yours, skip a second layout.</li>
+      <li>Network screen: <strong>don't connect to WiFi.</strong></li>
+      <li>Focus the setup window, <code>Shift + F10</code> for a command prompt.</li>
+      <li>Type this:
+        <div class="code">
+          <div class="bar"><span>CMD</span><button onclick="copyCode(this)">copy</button></div>
+          <pre>start ms-cxh:localonly</pre>
+        </div>
+        Opens local-account setup — no Microsoft server, no cloud sync, manual password recovery.
+      </li>
+      <li>Username, blank password — set a real one later inside Windows.</li>
+      <li>Privacy screen → <strong>no</strong> to everything: Location, Find My Device, diagnostics, inking &amp; typing, tailored experience, Advertising ID, presence sensing.</li>
+      <li>You're in. Bloatware on the desktop gets handled in Step 09.</li>
+    </ol>
+    <p>Fallback if <code>ms-cxh:localonly</code> ever breaks:</p>
+    <div class="code">
+      <div class="bar"><span>CMD — fallback</span><button onclick="copyCode(this)">copy</button></div>
+      <pre>reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\OOBE /v BypassNRO /t REG_DWORD /d 1
+shutdown /r /t 0</pre>
+    </div>
+    <p>Reboot → "I don't have internet" → local account.</p>
+  </div>
+</div>
+
+<div class="step" data-step="2">
+  <div class="step-head"><span class="num">[ 02 ]</span><span class="title">Windows Update</span><span class="meta"><span class="cat">System</span><span class="time">~20 min</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <p>Several rounds, back to back, restart between each, until nothing new shows up.</p>
+  </div>
+</div>
+
+<div class="step" data-step="3">
+  <div class="step-head"><span class="num">[ 03 ]</span><span class="title">Confirm the exact model</span><span class="meta"><span class="cat">System</span><span class="time">~1 min</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <div class="code">
+      <div class="bar"><span>POWERSHELL</span><button onclick="copyCode(this)">copy</button></div>
+      <pre>Get-CimInstance -ClassName Win32_ComputerSystem | Select-Object Model</pre>
+    </div>
+    <p>More reliable than the sticker on the bottom. Use this exact string to find the support page.</p>
+  </div>
+</div>
+
+<div class="step" data-step="4">
+  <div class="step-head"><span class="num">[ 04 ]</span><span class="title">BIOS update</span><span class="meta"><span class="cat">Firmware</span><span class="time">~10 min</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <p>Check the currently installed version first:</p>
+    <div class="code">
+      <div class="bar"><span>POWERSHELL</span><button onclick="copyCode(this)">copy</button></div>
+      <pre>(Get-CimInstance Win32_BIOS).SMBIOSBIOSVersion</pre>
+    </div>
+    <ol>
+      <li>Go to the manufacturer's official support site.</li>
+      <li>Search your exact model.</li>
+      <li>Open the BIOS / Firmware section.</li>
+      <li>Compare the listed version against the one from the command above.</li>
+      <li>If newer, download and run the update — keep the machine plugged in, don't interrupt it.</li>
+      <li>Reboot, re-run the command above to confirm the new version took.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="step" data-step="5">
+  <div class="step-head"><span class="num">[ 05 ]</span><span class="title">Drivers</span><span class="meta"><span class="cat">Drivers</span><span class="time">~15 min</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <p>On the manufacturer's support site, Drivers tab, in order:</p>
+    <ol>
+      <li>Chipset</li>
+      <li>GPU — if it's an Nvidia dGPU (most common on gaming laptops), skip the manufacturer's page and go straight to <a href="https://www.nvidia.com/en-us/drivers/" target="_blank">nvidia.com/drivers</a> instead: select your exact GPU model, product series, and OS → download → Custom Install → check <strong>"Perform a clean installation"</strong> → Game Ready by default (Studio only for certified software, e.g. Adobe/Maya).</li>
+      <li>Audio, WiFi, Bluetooth, touchpad</li>
+      <li>Manufacturer's low-level system driver — needed for the control-app step further down</li>
+    </ol>
+    <p>Check Device Manager after — clear any yellow warnings.</p>
+  </div>
+</div>
+
+<div class="step" data-step="6" id="tweaks">
+  <div class="step-head"><span class="num">[ 06 ]</span><span class="title">WinUtil</span><span class="meta"><span class="cat">Privacy</span><span class="time">~10 min</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <div class="code">
+      <div class="bar"><span>POWERSHELL (ADMIN)</span><button onclick="copyCode(this)">copy</button></div>
+      <pre>irm christitus.com/win | iex</pre>
+    </div>
+    <p><a href="https://github.com/ChrisTitusTech/winutil" target="_blank">github.com/ChrisTitusTech/winutil</a> — source, if curious.</p>
+    <p><span class="tag">TWEAKS TAB ONLY</span></p>
+    <ol>
+      <li>"Standard Tweaks" → Run.</li>
+      <li>Enable <strong>"Ultimate Performance"</strong> (hidden power plan, more aggressive than "High Performance" — worth it plugged in).</li>
+      <li>Customize Preferences:</li>
+    </ol>
+    <div class="toggle-grid">
+      <div class="toggle-row"><span class="label">Mouse Acceleration</span><span class="toggle"></span></div>
+      <div class="toggle-row"><span class="label">Start Menu Bing Search</span><span class="toggle"></span></div>
+      <div class="toggle-row"><span class="label">Start Menu Recommendations</span><span class="toggle"></span></div>
+      <div class="toggle-row"><span class="label">File Explorer File Extensions</span><span class="toggle on"></span></div>
+      <div class="toggle-row"><span class="label">File Explorer Hidden Files</span><span class="toggle on"></span></div>
+      <div class="toggle-row"><span class="label">Enable Long Paths</span><span class="toggle on"></span></div>
+      <div class="toggle-row"><span class="label">Battery % in Tray</span><span class="toggle on"></span></div>
+      <div class="toggle-row"><span class="label">Game Mode</span><span class="toggle on"></span></div>
+      <div class="toggle-row"><span class="label">Sticky Keys</span><span class="toggle"></span></div>
+      <div class="toggle-row"><span class="label">Lock Screen</span><span class="toggle"></span></div>
+      <div class="toggle-row"><span class="label">Dark Theme</span><span class="toggle on"></span></div>
+      <div class="toggle-row"><span class="label">Windows AI</span><span class="toggle"></span></div>
+      <div class="toggle-row"><span class="label">Recall (AI)<span class="note">not off by default — toggle manually</span></span><span class="toggle"></span></div>
+      <div class="toggle-row"><span class="label">WPBT<span class="note">firmware table, history of CVEs</span></span><span class="toggle"></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="step" data-step="7">
+  <div class="step-head"><span class="num">[ 07 ]</span><span class="title">O&amp;O ShutUp10</span><span class="meta"><span class="cat">Privacy</span><span class="time">~5 min</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <p><a href="https://www.oo-software.com/en/shutup10" target="_blank">oo-software.com/en/shutup10</a> → <strong>Actions → Apply only recommended settings</strong>. That's the bulk of it (280+ individual settings, no point listing them one by one).</p>
+    <p style="margin-top:16px;"><span class="tag">THEN</span> Go to the <strong>AI tab</strong> specifically — not covered by Recommended — and check all three are off:</p>
+    <div class="toggle-grid">
+      <div class="toggle-row"><span class="label">Copilot functionality<span class="note">disabled, no data recorded</span></span><span class="toggle on"></span></div>
+      <div class="toggle-row"><span class="label">Copilot application<span class="note">removed from the system</span></span><span class="toggle on"></span></div>
+      <div class="toggle-row"><span class="label">Recall local data<span class="note">none found / securely erased</span></span><span class="toggle on"></span></div>
+    </div>
+    <p>If any shows a warning, hit its Disable / Remove / Securely erase button.</p>
+  </div>
+</div>
+
+<div class="step" data-step="8">
+  <div class="step-head"><span class="num">[ 08 ]</span><span class="title">Firefox</span><span class="meta"><span class="cat">Browser</span><span class="time">~5 min</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <p><a href="https://www.mozilla.org/firefox/" target="_blank">mozilla.org/firefox</a> → add:</p>
+    <ul>
+      <li>uBlock Origin</li>
+      <li>Bitwarden</li>
+      <li>Dark Reader</li>
+      <li>Enhancer for YouTube</li>
+    </ul>
+    <p>Then enter Firefox settings: disable all AI features and unnecessary menus, and set tracking protection to <strong>Standard</strong>.</p>
+  </div>
+</div>
+
+<div class="step" data-step="9">
+  <div class="step-head"><span class="num">[ 09 ]</span><span class="title">Bloatware sweep</span><span class="meta"><span class="cat">Cleanup</span><span class="time">~15 min</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <p><a href="https://www.revouninstaller.com/" target="_blank">revouninstaller.com</a> → install, open it side by side with Settings → Apps → Installed apps.</p>
+    <ol>
+      <li>Scan both lists for anything you don't use.</li>
+      <li>Common candidates: trial antivirus (McAfee, Norton), unused Xbox apps, Phone Link, OEM companion/bloat apps.</li>
+      <li>Uninstall through Revo, not Windows directly — it catches leftovers the normal uninstaller skips.</li>
+      <li>After each removal, let Revo run its <strong>leftover scan</strong> (registry keys, empty folders) and clear what it finds.</li>
+      <li>Repeat until both lists only show things you actually use.</li>
+    </ol>
+    <div class="status-card" style="margin-top:14px;">
+      <div class="txt"><b>Hard rule</b>Never remove anything named <em>runtime</em> or <em>redistributable</em> — .NET Runtime, Visual C++ Redistributable, WebView2 Runtime. Other apps depend on these even if the name looks unfamiliar.</div>
+      <span class="dot warn"></span>
+    </div>
+  </div>
+</div>
+
+<div class="step" data-step="10">
+  <div class="step-head"><span class="num">[ 10 ]</span><span class="title">Replace manufacturer software</span><span class="meta"><span class="cat">Software</span><span class="time">~5 min</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <p>Manufacturer control apps (fan curves, battery, performance modes) are usually bloated. Confirmed, reliable community alternatives by brand:</p>
+    <ul>
+      <li><strong>ASUS</strong> (Armoury Crate + MyASUS) → <a href="https://github.com/seerge/g-helper" target="_blank">G-Helper</a></li>
+      <li><strong>Lenovo Legion</strong> (Vantage / Legion Zone) → <a href="https://github.com/LenovoLegionToolkit-Team/LenovoLegionToolkit" target="_blank">Lenovo Legion Toolkit (LLT)</a></li>
+      <li><strong>MSI</strong> (MSI Center, fan curves specifically) → <a href="https://github.com/Rem0o/FanControl.Releases" target="_blank">Fan Control</a></li>
+    </ul>
+  </div>
+</div>
+
+<div class="step" data-step="11" id="apps">
+  <div class="step-head"><span class="num">[ 11 ]</span><span class="title">Install apps</span><span class="meta"><span class="cat">Apps</span><span class="time">varies</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <p>PC is clean. Grouped by category, not priority — update this list per device.</p>
+
+    <div class="apps-toolbar">
+      <span id="appsCount">0 / 0 checked</span>
+      <button id="resetApps">Reset</button>
+    </div>
+
+    <div class="apps-columns" id="appsColumns">
+
+    <div class="app-cat"><h3>Browsers</h3><ul class="app-list">
+      <li><label><input type="checkbox"><span>Firefox</span></label></li>
+      <li><label><input type="checkbox"><span>Zen Browser</span></label></li>
+    </ul></div>
+
+    <div class="app-cat"><h3>Passwords</h3><ul class="app-list">
+      <li><label><input type="checkbox"><span>Bitwarden</span></label></li>
+    </ul></div>
+
+    <div class="app-cat"><h3>Notes &amp; Productivity</h3><ul class="app-list">
+      <li><label><input type="checkbox"><span>Notion</span></label></li>
+      <li><label><input type="checkbox"><span>Anki</span></label></li>
+    </ul></div>
+
+    <div class="app-cat"><h3>Media</h3><ul class="app-list">
+      <li><label><input type="checkbox"><span>Spotify</span></label></li>
+      <li><label><input type="checkbox"><span>DaVinci Resolve</span></label></li>
+      <li><label><input type="checkbox"><span>Calibre</span></label></li>
+      <li><label><input type="checkbox"><span>Affinity</span></label></li>
+      <li><label><input type="checkbox"><span>Aquile Reader</span></label></li>
+    </ul></div>
+
+    <div class="app-cat"><h3>Engineering</h3><ul class="app-list">
+      <li><label><input type="checkbox"><span>Autodesk Fusion</span></label></li>
+      <li><label><input type="checkbox"><span>UltiMaker Cura</span></label></li>
+      <li><label><input type="checkbox"><span>MATLAB</span></label></li>
+      <li><label><input type="checkbox"><span>LTspice</span></label></li>
+    </ul></div>
+
+    <div class="app-cat"><h3>Development</h3><ul class="app-list">
+      <li><label><input type="checkbox"><span>Git</span></label></li>
+      <li><label><input type="checkbox"><span>VS Code</span></label></li>
+      <li><label><input type="checkbox"><span>Claude Code</span></label></li>
+      <li><label><input type="checkbox"><span>Python</span></label></li>
+      <li><label><input type="checkbox"><span>GitHub Desktop</span></label></li>
+      <li><label><input type="checkbox"><span>WSL2 — Ubuntu + Kali Linux</span></label></li>
+      <li><label><input type="checkbox"><span>Arduino IDE</span></label></li>
+    </ul></div>
+
+    <div class="app-cat"><h3>Gaming</h3><ul class="app-list">
+      <li><label><input type="checkbox"><span>Epic Games Launcher</span></label></li>
+      <li><label><input type="checkbox"><span>Minecraft Launcher</span></label></li>
+      <li><label><input type="checkbox"><span>Ubisoft Connect</span></label></li>
+      <li><label><input type="checkbox"><span>Riot Client</span></label></li>
+    </ul></div>
+
+    <div class="app-cat"><h3>Communication</h3><ul class="app-list">
+      <li><label><input type="checkbox"><span>Discord</span></label></li>
+      <li><label><input type="checkbox"><span>WhatsApp</span></label></li>
+    </ul></div>
+
+    <div class="app-cat"><h3>Cloud</h3><ul class="app-list">
+      <li><label><input type="checkbox"><span>Google Drive</span></label></li>
+    </ul></div>
+
+    <div class="app-cat"><h3>Utilities</h3><ul class="app-list">
+      <li><label><input type="checkbox"><span>balenaEtcher</span></label></li>
+      <li><label><input type="checkbox"><span>EaseUS Partition Master</span></label></li>
+      <li><label><input type="checkbox"><span>Blip</span></label></li>
+      <li><label><input type="checkbox"><span>Revo Uninstaller</span></label></li>
+      <li><label><input type="checkbox"><span>HWMonitor</span></label></li>
+      <li><label><input type="checkbox"><span>FxSound</span></label></li>
+      <li><label><input type="checkbox"><span>WinToys</span></label></li>
+      <li><label><input type="checkbox"><span>7-Zip</span></label></li>
+    </ul></div>
+
+    <div class="app-cat"><h3>System</h3><ul class="app-list">
+      <li><label><input type="checkbox"><span>PowerToys</span></label></li>
+      <li><label><input type="checkbox"><span>AltSnap</span></label></li>
+      <li><label><input type="checkbox"><span>VLC</span></label></li>
+      <li><label><input type="checkbox"><span>Flow Launcher</span></label></li>
+      <li><label><input type="checkbox"><span>TP-Link TL-WN722N Driver</span></label></li>
+    </ul></div>
+
+    </div>
+
+    <div class="code" style="margin-top:24px;">
+      <div class="bar"><span>MAINTENANCE — RUN PERIODICALLY</span><button onclick="copyCode(this)">copy</button></div>
+      <pre>winget update --all</pre>
+    </div>
+    <p class="section-desc" style="margin-top:6px;">Updates every winget-managed app in one shot instead of checking each one by hand.</p>
+  </div>
+</div>
+
+<div class="step" data-step="12">
+  <div class="step-head"><span class="num">[ 12 ]</span><span class="title">Backup — Google Drive</span><span class="meta"><span class="cat">Cloud</span><span class="time">~10 min</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <p><a href="https://www.google.com/drive/download/" target="_blank">google.com/drive/download</a> → install → sign in.</p>
+    <ol>
+      <li>When asked how to sync, you'll see two sections: <strong>"Google Drive"</strong> (mounts your whole Drive as a virtual disk) and <strong>"My computer"</strong> (backs up specific folders from this PC to the cloud). You want the second one.</li>
+      <li>Under "My computer" → <strong>Add folder</strong> → pick the specific lightweight folder(s) you want protected. Not the whole drive, not your Downloads.</li>
+      <li>Leave photo/video quality options unchecked unless that folder actually has heavy media.</li>
+      <li>Confirm. It syncs in the background from here on, every time something in that folder changes.</li>
+    </ol>
+  </div>
+</div>
+
+<div class="step" data-step="13">
+  <div class="step-head"><span class="num">[ 13 ]</span><span class="title">Development environment</span><span class="meta"><span class="cat">Dev</span><span class="time">~20 min</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <p><span class="tag">ORDER</span> Git → VS Code → Python → GitHub Desktop → Claude Code.</p>
+
+    <p><strong>Git</strong> — <a href="https://git-scm.com/" target="_blank">git-scm.com</a> → install. Key installer choices:</p>
+    <ul>
+      <li>Default branch name → <strong>override to "main"</strong> (GitHub's standard since 2020, saves renaming every repo)</li>
+      <li>PATH → <strong>"Git from the command line and also from 3rd-party software"</strong> (the recommended middle option)</li>
+      <li>SSH → <strong>bundled OpenSSH</strong></li>
+      <li>HTTPS backend → <strong>OpenSSL library</strong> (Secure Channel is only for company-managed certificates)</li>
+      <li>Line endings → <strong>"Checkout Windows-style, commit Unix-style"</strong> (the Windows-recommended default)</li>
+      <li>Terminal → <strong>MinTTY</strong></li>
+      <li>Default editor when it asks → pick anything for now (Nano if given the choice) — overridden in the VS Code step below anyway</li>
+      <li>Default <code>git pull</code> behavior → <strong>"Fast-forward only"</strong> (safest for solo work — stops and tells you instead of guessing)</li>
+      <li>Credential helper → <strong>Git Credential Manager</strong></li>
+      <li>Extra options → enable <strong>both</strong> (file system caching, symbolic links)</li>
+    </ul>
+    <p>Then set your identity (own line, copy exactly, swap in your details):</p>
+    <div class="code">
+      <div class="bar"><span>POWERSHELL</span><button onclick="copyCode(this)">copy</button></div>
+      <pre>git config --global user.name "Your Name"
+git config --global user.email "you@email.com"</pre>
+    </div>
+
+    <p><strong>VS Code</strong> — <a href="https://code.visualstudio.com/" target="_blank">code.visualstudio.com</a> → install, check "Open with Code" for both files and folders in the installer, skip the desktop icon. Extensions to add (<code>Ctrl+Shift+X</code>): <strong>Python</strong> (Microsoft) and <strong>GitLens</strong>. Then set it as Git's default editor:</p>
+    <div class="code">
+      <div class="bar"><span>POWERSHELL</span><button onclick="copyCode(this)">copy</button></div>
+      <pre>git config --global core.editor "code --wait"</pre>
+    </div>
+
+    <p><strong>Python</strong>:</p>
+    <div class="code">
+      <div class="bar"><span>POWERSHELL</span><button onclick="copyCode(this)">copy</button></div>
+      <pre>winget install Python.Python.3.13</pre>
+    </div>
+
+    <p><strong>GitHub Desktop</strong> — <a href="https://desktop.github.com/" target="_blank">desktop.github.com</a> → install → sign in with (or create) a GitHub account. Confirms/fills your Git identity from the account.</p>
+
+    <p><strong>Claude Code</strong> — requires a Claude Pro plan or higher.</p>
+    <div class="code">
+      <div class="bar"><span>POWERSHELL</span><button onclick="copyCode(this)">copy</button></div>
+      <pre>irm https://claude.ai/install.ps1 | iex</pre>
+    </div>
+    <div class="status-card">
+      <div class="txt"><b>Containment</b>Never use <code>--dangerously-skip-permissions</code> on your own machine. Always launch <code>claude</code> from inside the specific project folder, never from your whole user folder. Use <code>claude --plan</code> the first few times to review everything before it touches a file.</div>
+      <span class="dot warn"></span>
+    </div>
+
+    <p><span class="tag">DAILY FLOW</span> Write/ask Claude Code to write → test in the integrated terminal → GitHub Desktop: write a commit message → <strong>Commit to main</strong> → <strong>Push origin</strong>. Repeat.</p>
+  </div>
+</div>
+
+<div class="step" data-step="14">
+  <div class="step-head"><span class="num">[ 14 ]</span><span class="title">Keyboard shortcuts reference</span><span class="meta"><span class="cat">Reference</span><span class="time">—</span></span><span class="chev">▾</span></div>
+  <div class="step-body">
+    <p>Grows as you configure more tools. Current set:</p>
+    <div class="toggle-grid">
+      <div class="toggle-row"><span class="label">Space (file selected)<span class="note">PowerToys Peek — preview</span></span></div>
+      <div class="toggle-row"><span class="label">Win + Shift + C<span class="note">PowerToys Color Picker</span></span></div>
+      <div class="toggle-row"><span class="label">Win + Shift + T<span class="note">PowerToys Text Extractor (OCR)</span></span></div>
+      <div class="toggle-row"><span class="label">Alt + drag window<span class="note">AltSnap — move without the title bar</span></span></div>
+      <div class="toggle-row"><span class="label">Alt + Space<span class="note">Flow Launcher — open search</span></span></div>
+      <div class="toggle-row"><span class="label">yt + term (in Flow)<span class="note">Search YouTube directly</span></span></div>
+      <div class="toggle-row"><span class="label">kill + app (in Flow)<span class="note">Close that process</span></span></div>
+      <div class="toggle-row"><span class="label">shutdown / restart / lock (in Flow)<span class="note">Runs it immediately</span></span></div>
+      <div class="toggle-row"><span class="label">w + link (in Flow)<span class="note">Opens that link in browser</span></span></div>
+    </div>
+  </div>
+</div>
+
+</section>
+
+</main>
+
+<div class="stripe-bar thick"></div>
+
+<footer>
+  <div class="wrap">
+    <div class="corners">
+      <span>[ by R3DX ]</span>
+      <span>PC_SETUP.GUIDE</span>
+    </div>
+    <div class="credit">
+      <span>PC_SETUP.GUIDE — PERSONAL REFERENCE, EDIT FREELY · © 2026 <span class="id">R3DX</span> · ALL RIGHTS RESERVED</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ---- accordion ----
+document.querySelectorAll('.step-head').forEach(h=>{
+  h.addEventListener('click', ()=>{
+    h.nextElementSibling.classList.toggle('open');
+  });
+});
+
+// ---- expand/compact all (visual toggle) ----
+const expandToggle = document.getElementById('expandToggle');
+let allExpanded = false;
+expandToggle.addEventListener('click', ()=>{
+  allExpanded = !allExpanded;
+  expandToggle.classList.toggle('on', allExpanded);
+  expandToggle.textContent = allExpanded ? 'Compact all' : 'Expand all';
+  document.querySelectorAll('.step-body').forEach(b=>b.classList.toggle('open', allExpanded));
+});
+
+// ---- copy buttons ----
+function copyCode(btn){
+  const pre = btn.closest('.code').querySelector('pre');
+  navigator.clipboard.writeText(pre.textContent.trim()).then(()=>{
+    const old = btn.textContent; btn.textContent = 'copied'; 
+    setTimeout(()=>btn.textContent = old, 1200);
+  });
+}
+
+// ---- wireframe globe (flattened / oval projection) ----
+(function(){
+  const svg = document.getElementById('globe');
+  const RX = 130, RY = 85;
+  const ns = 'http://www.w3.org/2000/svg';
+  function el(tag, attrs){
+    const e = document.createElementNS(ns, tag);
+    for(const k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+  // outer rim
+  svg.appendChild(el('ellipse', {cx:0, cy:0, rx:RX, ry:RY, class:'rim'}));
+  // meridians (longitude)
+  const meridianCount = 9;
+  for(let i=0;i<meridianCount;i++){
+    const angle = (i * (180/meridianCount)) * Math.PI/180;
+    const rx = Math.abs(RX * Math.cos(angle));
+    svg.appendChild(el('ellipse', {cx:0, cy:0, rx:rx.toFixed(2), ry:RY}));
+  }
+  // parallels (latitude)
+  const parallelCount = 7;
+  for(let i=1;i<parallelCount;i++){
+    const lat = (-90 + i * (180/parallelCount)) * Math.PI/180;
+    const y = RY * Math.sin(lat);
+    const rx = RX * Math.cos(lat);
+    if(rx > 1){
+      svg.appendChild(el('line', {x1:(-rx).toFixed(2), y1:y.toFixed(2), x2:rx.toFixed(2), y2:y.toFixed(2)}));
+    }
+  }
+})();
+
+// ---- apps checklist (persistent) ----
+(function(){
+  const STORAGE_KEY = 'pc_setup_apps_checked';
+  const boxes = Array.from(document.querySelectorAll('#appsColumns input[type=checkbox]'));
+  const counter = document.getElementById('appsCount');
+
+  function updateCounter(){
+    const checked = boxes.filter(b=>b.checked).length;
+    counter.textContent = checked + ' / ' + boxes.length + ' checked';
+  }
+
+  async function save(){
+    const state = boxes.map(b=>b.checked);
+    try{ await window.storage.set(STORAGE_KEY, JSON.stringify(state), false); }catch(e){}
+  }
+
+  async function load(){
+    try{
+      const res = await window.storage.get(STORAGE_KEY, false);
+      if(res && res.value){
+        const state = JSON.parse(res.value);
+        boxes.forEach((b,i)=>{ if(state[i]) b.checked = true; });
+      }
+    }catch(e){ /* nothing saved yet */ }
+    updateCounter();
+  }
+
+  boxes.forEach(b=>{
+    b.addEventListener('change', ()=>{ updateCounter(); save(); });
+  });
+
+  document.getElementById('resetApps').addEventListener('click', ()=>{
+    boxes.forEach(b=>b.checked=false);
+    updateCounter(); save();
+  });
+
+  load();
+})();
+</script>
+
+</body>
+</html>
